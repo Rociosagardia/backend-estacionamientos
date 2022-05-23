@@ -6,6 +6,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { Usuarios } from './usuarios/usuarios.entity';
 import { EstacionamientoModule } from './estacionamiento/estacionamiento.module';
 import { Estacionamiento } from './estacionamiento/estacionamiento.entity';
+import { Vehiculo } from './vehiculo/vehiculo.entity';
+import { VehiculoModule } from './vehiculo/vehiculo.module';
 
 @Module({
   imports: [
@@ -16,10 +18,11 @@ import { Estacionamiento } from './estacionamiento/estacionamiento.entity';
       username: 'admin',
       password: 'admin',
       database: 'estacionamientos',
-      entities: [Usuarios, Estacionamiento],
+      entities: [Usuarios, Estacionamiento, Vehiculo],
       synchronize: true,
     }),
     UsuariosModule,
+    VehiculoModule,
     EstacionamientoModule,
   ],
   controllers: [AppController],
