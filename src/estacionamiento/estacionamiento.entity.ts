@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Usuarios } from 'src/usuarios/usuarios.entity';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, JoinColumn, OneToOne } from 'typeorm';
 
 @Entity()
 export class Estacionamiento {
@@ -7,7 +8,7 @@ export class Estacionamiento {
   id_estacionamiento: number;
 
   @Column()
-  ciudad: string;
+  region: string;
 
   @Column()
   comuna: string;
@@ -16,26 +17,27 @@ export class Estacionamiento {
   calle: string;
 
   @Column()
-  number: string;
+  numero: string;
 
   @Column()
-  rdDireccion: string;
+  tipo_estacionamiento: string;
 
   @Column({nullable:true})
   numero_estacionamiento: string;
 
   @Column({nullable:true})
-  tipo_estacionamiento: string;
-
-  @Column({nullable:true})
   nivel_estacionamiento: string;
 
   @Column({nullable:true})
-  caracteristicas: string;
+  descripcion: string;
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
+
+  @OneToOne(() => Usuarios)
+  @JoinColumn()
+  usuario: Usuarios;
 }
