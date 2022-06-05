@@ -7,37 +7,36 @@ export class Estacionamiento {
   @PrimaryGeneratedColumn()
   id_estacionamiento: number;
 
-  @Column()
-  region: string;
+  // @Column({type: 'varchar', length: 30, unique: false, nullable: false})
+  // ciudad: string;
 
-  @Column()
+  @Column({type:'varchar',length: 30, unique: false, nullable: false})
   comuna: string;
 
-  @Column()
+  @Column({type:'varchar',length: 30, unique: true, nullable: false})
   calle: string;
 
-  @Column()
+  @Column({type:'varchar',length: 6, unique: false, nullable: false})
   numero: string;
 
-  @Column()
-  tipo_estacionamiento: string;
+  // @Column()
+  // rdDireccion: string;
 
-  @Column({nullable:true})
+  @Column({type: 'varchar', length: 6, unique: false, nullable:true})
   numero_estacionamiento: string;
 
-  @Column({nullable:true})
+  // @Column({type: 'varchar', length: 5, unique: false, nullable:true})
+  // tipo_estacionamiento: string;
+
+  @Column({type: 'varchar', length: 6, unique: false, nullable:true})
   nivel_estacionamiento: string;
 
-  @Column({nullable:true})
-  descripcion: string;
+  @Column({type:'varchar',length: 100, unique: false, nullable:true})
+  caracteristicas: string;
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
   @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
-
-  @OneToOne(() => Usuarios)
-  @JoinColumn()
-  usuario: Usuarios;
 }

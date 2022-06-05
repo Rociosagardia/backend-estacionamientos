@@ -7,19 +7,19 @@ export class Vehiculo {
   @PrimaryGeneratedColumn()
   id_vehiculo: number;
 
-  @Column()
+  @Column({length: 40, nullable:false, type:'varchar'})
   marca: string;
 
-  @Column()
+  @Column({length:20, nullable:false, type:'varchar'})
   anio: string;
 
-  @Column()
+  @Column({length:30, nullable:false, type:'varchar'})
   modelo: string;
 
-  @Column()
+  @Column({length:20, nullable:false, type:'varchar'})
   color: string;
 
-  @Column()
+  @Column({length:6, nullable:false, type:'varchar', unique:true})
   patente: string;
 
   @CreateDateColumn({ type: 'timestamp' })
@@ -31,5 +31,4 @@ export class Vehiculo {
   @OneToOne(() => Usuarios)
   @JoinColumn()
   usuario: Usuarios;
-
 }
